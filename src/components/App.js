@@ -56,10 +56,12 @@ const App = () => {
   }
   return (
     <div>
+      <ul>
         {
         data&&data.map((item,idx)=>(
           <li key={idx}>{item}</li>
         ))}
+      </ul>
         {
           btn&&<button type="submit" onClick={handlingFn}>Load More</button>
         }
