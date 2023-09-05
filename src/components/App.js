@@ -1,5 +1,5 @@
 
-import React from "react";
+import React,{useState} from "react";
 import './../styles/App.css';
 
 const items = [
@@ -36,9 +36,33 @@ const items = [
 ];
 
 const App = () => {
+  const [idx,setIdx]=useState(0);
+  const [btn,setBtn]=useState(true);
+  const [data,setData]=useState([]);
+
+  function handlingFn(){
+    // if(idx>=19){
+    //   setBtn(false);
+    //   return;
+    // }
+    let temp=items.slice(idx,idx+10);
+    setData([...data,...temp]);
+    // console.log(temp);
+    if(idx>=19){
+        setBtn(false);
+        return;
+      }
+    setIdx(idx+10);
+  }
   return (
     <div>
-        {/* Do not remove the main div */}
+        {
+        data&&data.map((item,idx)=>(
+          <li key={idx}>{item}</li>
+        ))}
+        {
+          btn&&<button type="submit" onClick={handlingFn}>Load More</button>
+        }
     </div>
   )
 }
