@@ -46,13 +46,20 @@ const App = () => {
     //   return;
     // }
     let temp=items.slice(idx,idx+10);
-    setData([...data,...temp]);
+    // setData([...data,...temp]);
+    setTimeout(() => {
+      setData([
+        ...data,
+        ...temp
+      ]);
+      setIdx(idx+10);
+    }, 500);
     // console.log(temp);
     if(idx>=19){
         setBtn(false);
         return;
       }
-    setIdx(idx+10);
+    
   }
   return (
     <div>
